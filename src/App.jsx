@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, AreaChart, Area, LineChart, Line, CartesianGrid } from "recharts";
 
-const API_KEY = import.meta.env.VITE_POSTHOG_API_KEY;
-
 const RANGES = [
   { label: "7D",  value: "-7d",   display: "Last 7 days",    interval: "day",   prevValue: "-14d",  prevInterval: "day"   },
   { label: "30D", value: "-30d",  display: "Last 30 days",   interval: "week",  prevValue: "-60d",  prevInterval: "week"  },
@@ -23,9 +21,9 @@ const pct  = (n) => n == null ? "—" : `${n.toFixed(1)}%`;
 const diff = (a, b) => a != null && b != null ? a - b : null;
 
 async function hogql(sql) {
-  const r = await fetch(`/api/projects/@current/query`, {
+  const r = await fetch(`/api/query`, {
     method: "POST",
-    headers: { Authorization: `Bearer ${API_KEY}`, "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query: { kind: "HogQLQuery", query: sql } }),
   });
   if (!r.ok) { const t = await r.text(); throw new Error(t.slice(0, 120)); }
