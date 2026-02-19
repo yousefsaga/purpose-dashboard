@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, AreaChart, Area } from "recharts";
 
-const API_KEY = "phx_SI39K387LgFZkR14U1Lvu3ADV7uO7r9SlPEtugu2YKwNCF3";
+const API_KEY = "phx_CK4ceOx0xXxMMEKU2z9byiLm1RMqKHeKEQjxt1dZvZvVGV0";
 
 const RANGES = [
   { label: "7D",  value: "-7d",   display: "Last 7 days",    interval: "day",   prevValue: "-14d",  prevInterval: "day"   },
